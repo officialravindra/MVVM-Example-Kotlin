@@ -1,26 +1,19 @@
 package com.example.mvvmkotlinexample.view
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmkotlinexample.Adapter.GetPlansAdapter
 import com.example.mvvmkotlinexample.R
-import com.example.mvvmkotlinexample.model.ServicesSetterGetter
-import com.example.mvvmkotlinexample.repository.MainActivityRepository
-import com.example.mvvmkotlinexample.retrofit.RetrofitClient
 import com.example.mvvmkotlinexample.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,6 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         btnClick.setOnClickListener {
 
+            val Main = Intent(this, LoginActivity::class.java)
+
+            startActivity(Main)
             wp7progressBar.showProgressBar()
 
             mainActivityViewModel.getUser()!!.observe(this, Observer { serviceSetterGetter ->
@@ -58,7 +54,6 @@ class MainActivity : AppCompatActivity() {
                 val msg = serviceSetterGetter
 
                 lblResponse.text = msg[1].planName
-
 
 
                 // getting the recyclerview by its id
