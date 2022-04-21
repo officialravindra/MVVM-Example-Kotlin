@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         btnClick.setOnClickListener {
 
-            val Main = Intent(this, LoginActivity::class.java)
+            val Main = Intent(this, LoginActivity2::class.java)
 
             startActivity(Main)
             wp7progressBar.showProgressBar()
